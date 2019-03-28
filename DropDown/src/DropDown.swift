@@ -41,7 +41,7 @@ extension UIBarButtonItem: AnchorView {
 }
 
 /// A Material Design drop down in replacement for `UIPickerView`.
-public final class DropDown: UIView {
+@objc public final class DropDown: UIView {
 
 	//TODO: handle iOS 7 landscape mode
 
