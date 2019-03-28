@@ -102,7 +102,7 @@ extension UIBarButtonItem: AnchorView {
 
 
 	/// The view to which the drop down will displayed onto.
-	public weak var anchorView: AnchorView? {
+	@objc public weak var anchorView: AnchorView? {
 		didSet { setNeedsUpdateConstraints() }
 	}
 
@@ -299,27 +299,27 @@ extension UIBarButtonItem: AnchorView {
 	/**
 	The option of the show animation. Global change.
 	*/
-	public static var animationEntranceOptions = DPDConstant.Animation.EntranceOptions
+	@objc public static var animationEntranceOptions = DPDConstant.Animation.EntranceOptions
 	
 	/**
 	The option of the hide animation. Global change.
 	*/
-	public static var animationExitOptions = DPDConstant.Animation.ExitOptions
+	@objc public static var animationExitOptions = DPDConstant.Animation.ExitOptions
 	
 	/**
 	The option of the show animation. Only change the caller. To change all drop down's use the static var.
 	*/
-	public var animationEntranceOptions: UIView.AnimationOptions = DropDown.animationEntranceOptions
+	@objc public var animationEntranceOptions: UIView.AnimationOptions = DropDown.animationEntranceOptions
 	
 	/**
 	The option of the hide animation. Only change the caller. To change all drop down's use the static var.
 	*/
-	public var animationExitOptions: UIView.AnimationOptions = DropDown.animationExitOptions
+	@objc public var animationExitOptions: UIView.AnimationOptions = DropDown.animationExitOptions
 
 	/**
 	The downScale transformation of the tableview when the DropDown is appearing
 	*/
-	public var downScaleTransform = DPDConstant.Animation.DownScaleTransform {
+	@objc public var downScaleTransform = DPDConstant.Animation.DownScaleTransform {
 		willSet { tableViewContainer.transform = newValue }
 	}
 
@@ -355,7 +355,7 @@ extension UIBarButtonItem: AnchorView {
      
      Changing the cell nib automatically reloads the drop down.
      */
-	public var cellNib = UINib(nibName: "DropDownCell", bundle: Bundle(for: DropDownCell.self)) {
+	@objc public var cellNib = UINib(nibName: "DropDownCell", bundle: Bundle(for: DropDownCell.self)) {
 		didSet {
 			tableView.register(cellNib, forCellReuseIdentifier: DPDConstant.ReusableIdentifier.DropDownCell)
 			templateCell = nil
@@ -370,7 +370,7 @@ extension UIBarButtonItem: AnchorView {
 
 	Changing the data source automatically reloads the drop down.
 	*/
-	public var dataSource = [String]() {
+	@objc public var dataSource = [String]() {
 		didSet {
             deselectRows(at: selectedRowIndices)
 			reloadAllComponents()
@@ -383,7 +383,7 @@ extension UIBarButtonItem: AnchorView {
 	Changing this value automatically reloads the drop down.
 	This has uses for setting accibility identifiers on the drop down cells (same ones as the localization keys).
 	*/
-	public var localizationKeysDataSource = [String]() {
+	@objc public var localizationKeysDataSource = [String]() {
 		didSet {
 			dataSource = localizationKeysDataSource.map { NSLocalizedString($0, comment: "") }
 		}
@@ -398,7 +398,7 @@ extension UIBarButtonItem: AnchorView {
 	By default, the cell's text takes the plain `dataSource` value.
 	Changing `cellConfiguration` automatically reloads the drop down.
 	*/
-	public var cellConfiguration: ConfigurationClosure? {
+	@objc public var cellConfiguration: ConfigurationClosure? {
 		didSet { reloadAllComponents() }
 	}
     
@@ -407,12 +407,12 @@ extension UIBarButtonItem: AnchorView {
      
      Changing `customCellConfiguration` automatically reloads the drop down.
      */
-    public var customCellConfiguration: CellConfigurationClosure? {
+    @objc public var customCellConfiguration: CellConfigurationClosure? {
         didSet { reloadAllComponents() }
     }
 
 	/// The action to execute when the user selects a cell.
-	public var selectionAction: SelectionClosure?
+	@objc public var selectionAction: SelectionClosure?
     
     /**
     The action to execute when the user selects multiple cells.
@@ -420,13 +420,13 @@ extension UIBarButtonItem: AnchorView {
     Providing an action will turn on multiselection mode.
     The single selection action will still be called if provided.
     */
-    public var multiSelectionAction: MultiSelectionClosure?
+    @objc public var multiSelectionAction: MultiSelectionClosure?
 
 	/// The action to execute when the drop down will show.
-	public var willShowAction: Closure?
+	@objc public var willShowAction: Closure?
 
 	/// The action to execute when the user cancels/hides the drop down.
-	public var cancelAction: Closure?
+	@objc public var cancelAction: Closure?
 
 	/// The dismiss mode of the drop down. Default is `OnTap`.
 	public var dismissMode = DismissMode.onTap {
