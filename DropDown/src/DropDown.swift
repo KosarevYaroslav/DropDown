@@ -370,7 +370,7 @@ public final class DropDown: UIView {
 
 	Changing the data source automatically reloads the drop down.
 	*/
-	public var dataSource = [String]() {
+	@objc public var dataSource = [String]() {
 		didSet {
             deselectRows(at: selectedRowIndices)
 			reloadAllComponents()
